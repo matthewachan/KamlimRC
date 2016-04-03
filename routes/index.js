@@ -105,12 +105,6 @@ router.get('/topics/:topic/subtopics/:subtopic', function(req, res, next) {
 	res.json(subtopic);
 });
 
-
-// GET request to catch all other routes
-router.get('*', function(req, res, next) {
-	res.render('index', { title: 'Express' });
-});
-
 /********************* POST Requests **************************/
 
 // POST request for adding a new topic
