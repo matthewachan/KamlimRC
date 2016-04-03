@@ -50,6 +50,12 @@ router.get('/', function(req, res, next) {
 	res.render('index', { title: 'Express' });
 });
 
+// GET request for the Kamlim home page
+router.get('/home', function(req, res, next) {
+	// Render the page defined in index.ejs
+	res.render('index', { title: 'Express' });
+});
+
 // GET request for the Kamlim admin page
 router.get('/admin', function(req, res, next) {
 	// Render the page defined in admin.ejs
