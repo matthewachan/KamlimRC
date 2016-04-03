@@ -9,8 +9,13 @@ p {
 	font-size: 17px;
 }
 /* Remove underlines from links */
-a, a:hover {
+a, a:hover, a:visited {
 	text-decoration: none !important;
+	color: black;
+
+}
+a:hover {
+	color: #888;
 }
 /* Formatting for forms */
 form {
