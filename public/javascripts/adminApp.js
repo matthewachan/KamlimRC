@@ -123,7 +123,7 @@ app.factory('AdminFact', ['$http', function($http) {
 		return $http.put('/topics/' + topic._id + '/subtopics/' + object.focusedSubtopic._id, newData).success(function(data) {
 			// Locate the subtopic in the array
 			var index = topic.subtopics.map(function(element) {
-				return element._id
+				return element._id;
 			}).indexOf(data._id);
 			// Modify the subtopic to match our updated data
 			topic.subtopics[index].title = data.title;
@@ -178,7 +178,7 @@ app.controller('TopicCtrl', ['$scope', 'AdminFact', function($scope, AdminFact) 
 	$scope.editTopic = function(topicId) {
 		AdminFact.editTopic(topicId).success(function(data){
 			// Fill the form fields with the data from the topic we want to edit
-			$scope.title = AdminFact.focusedTopic.title;
+			$scope.title = AdminFact.focusedTopic.title
 		});
 	};
 
@@ -186,12 +186,14 @@ app.controller('TopicCtrl', ['$scope', 'AdminFact', function($scope, AdminFact) 
 	$scope.updateTopic = function() {
 		// Form validation
 		if ($scope.title === '') return;
-		AdminFact.updateTopic($scope.topics, topicId, {
+		AdminFact.updateTopic($scope.topics, {
 			title: $scope.title
 		});
 		// Reset form fields
 		$scope.title = '';
 	};
+
+
 }]);
 
 // Controller handling data for the Subtopics page

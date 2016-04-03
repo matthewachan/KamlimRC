@@ -24,8 +24,8 @@ router.param('topic', function(req, res, next, id) {
 		// Bind the object to req.topic
 		req.topic = topic;
 		return next();
-	})
-})
+	});
+});
 
 // Pre-load a specific subtopic
 router.param('subtopic', function(req, res, next, id){
@@ -39,8 +39,8 @@ router.param('subtopic', function(req, res, next, id){
 		// Bind the object to req.subtopic
 		req.subtopic = subtopic;
 		return next();
-	})
-})
+	});
+});
 
 /********************* GET Requests **************************/
 
@@ -76,13 +76,13 @@ router.get('/subtopics', function(req, res, next) {
 		if (err) return next(err);
 		// Return all subtopics in JSON format
 		res.json(subtopics);
-	})
-})
+	});
+});
 
 // GET request that returns a specific subtopic
 router.get('/subtopics/:subtopic', function(req, res, next) {
 	res.json(req.subtopic);
-})
+});
 
 
 // GET request that returns a specific topic
@@ -91,15 +91,14 @@ router.get('/topics/:topic', function(req, res) {
 	req.topic.populate('subtopics', function(err, topic) {
 		if (err) return next(err);
 		res.json(topic);
-	})
-})
+	});
+});
 
 // GET request that returns a specific subtopic
 router.get('/topics/:topic/subtopics/:subtopic', function(req, res, next) {
 	var subtopic = req.subtopic;
 	res.json(subtopic);
-	
-})
+});
 
 
 
@@ -149,8 +148,8 @@ router.put('/topics/:topic', function(req, res, next) {
 		if (err) return next(err);
 		// Return the updated version of the topic
 		res.json(topic);
-	})
-})
+	});
+});
 
 // PUT request for updating a subtopic
 router.put('/topics/:topic/subtopics/:subtopic', function(req, res, next) {
@@ -160,8 +159,8 @@ router.put('/topics/:topic/subtopics/:subtopic', function(req, res, next) {
 		if (err) return next(err);
 		// Return the updated version of the subtopic
 		res.json(subtopic);
-	})
-})
+	});
+});
 
 /********************* DELETE Requests **************************/
 
@@ -173,8 +172,8 @@ router.delete('/topics/:topic', function(req, res, next) {
 		// Error handling
 		if (err) return next(err);
 		res.json(topic);
-	})
-})
+	});
+});
 
 // DELETE request to remove a subtopic
 router.delete('/topics/:topic/subtopics/:subtopic', function(req, res, next) {
@@ -182,14 +181,14 @@ router.delete('/topics/:topic/subtopics/:subtopic', function(req, res, next) {
 	Topic.findOneAndUpdate({_id: req.params.topic}, {$pull: {subtopics: req.params.subtopic}}, function(err, topic) {
 			// Error handling
 			if (err) return next(err);
-	})
+	});
 	// Look up the subtopic by ID and delete it
 	Subtopic.find({_id: req.params.subtopic}).remove(function(err, subtopic) {
 		// Error handling
 		if (err) return next(err);
 		res.json(subtopic);
-	})
+	});
 })
-
+;
 // Export the router
 module.exports = router;
