@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang='en-US'>
+	<head>
+		<title>Kamlim Retreat Center</title>
+		<meta charset='utf-8'/>
+		<!-- Website description -->
+		<meta name='description' content='Kamlim Retreat Center offers a comfortable location for religious retreats near Perris, California.'/>
+		<meta name='author' content='Matthew Chan'/>
+		<meta name='keywords' content='kamlim, retreat, center, korean, christian, church, california'/>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+
+		<!-- Bootstrap CSS -->
+		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' type='text/css'/>
+		<!-- Custom CSS styles -->
+		<link rel='stylesheet' href='../stylesheets/style.css' type='text/css'/>
+		<!-- Lato font -->
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900' type='text/css'/>
+
+		<!-- jQuery -->
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js' type='text/javascript'></script>
+		<!-- Bootstrap JS -->
+		<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' type='text/javascript'></script>
+		<!-- AngularJS -->
+		<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js' type='text/javascript'></script>
+		<!-- AngularJS UI Router -->
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js' type='text/javascript'></script>
+		<!-- AngularJS Sanitize -->
+		<script src='http://code.angularjs.org/1.0.4/angular-sanitize.min.js' type='text/javascript'></script>
+		<!-- Custom Angular Application -->
+		<script src='../javascripts/kamlimApp.js' type='text/javascript'></script>
+	</head>
+	<body ng-app='kamlimApp'>
+
+		<div class='container'>
+			<div class='row'>
+				<div class='col-md-8 col-md-offset-2'>
+
+					<!-- Page header -->
+					<header ng-controller='HomeCtrl'>
+						<h1 style='font-size:58px; margin-top: 44px; margin-bottom: 22px;' class='text-uppercase text-center'><a href='#'><strong>Kamlim Retreat Center</strong></a></h1>
+
+
+						<!-- Navigation Menu -->
+						<nav class='navbar col-md-10 col-md-offset-1'>
+							<div class='container-fluid'>
+								<ul class='nav navbar-nav'>
+
+									<li class='dropdown' ng-repeat='topic in topics'><a class='dropdown-toggle' data-toggle='dropdown' href=''>{{topic.title}}<span class='caret'></span></a>
+										<ul  class='dropdown-menu'>
+											<li ng-repeat='subtopic in subtopics' ng-show='subtopic.topic == topic._id'><a href='#/subtopics/{{$index}}'>{{subtopic.title}}</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</nav>	
+					</header>
+
+				</div>
+
+				<!-- INJECT TEMPLATE HERE -->
+				<div ui-view></div>
+
+				<!-- Footer -->
+				<footer class='footer'>
+					<div class='col-md-12'>
+						<cite style='margin-top: 22px; padding-bottom:15px; padding-right: 11px;' class='pull-right'>&copy; Kamlim 2016</cite>
+					</div>
+				</footer>
+
+			</div>
+		</div>
+
+	<!-- Template for home state -->
+	<script type='text/ng-template' id='/home.html'>
+
+		<div class='center-block' style='overflow: hidden; height: 500px; width: 96%; position: relative;'>
+
+			<img src='../images/activities.jpg' style='width: 1260px; top: -260px; position: absolute;' alt=''/>
+
+				<!-- Language selection menu -->
+				<div style='position: absolute; padding-top: 200px;'>
+					<a class='language-btn text-center' href='#'>English</a>
+					<a class='language-btn text-center' href='#'>한글</a>
+					<a class='language-btn text-center' href='#'>Español</a>
+				</div>
+
+		</div>
+
+	</script>
+
+	<!-- Template for displaying subtopics -->
+	<script type='text/ng-template' id='/subtopic.html'>
+
+		<span ng-show='subtopic.image'>
+			<div class='center-block' style='overflow: hidden; height: 300px; width: 96%;'>
+					<img src='{{subtopic.image}}' style='width: 1260px; margin-top:-260px;' alt=''/> 
+			</div>
+		</span>
+
+		<div class='col-md-10 col-md-offset-1'>
+			<article style='margin-top: 44px;'>
+				<h2>{{subtopic.title}}</h2>
+				<p ng-bind-html='subtopic.body' style='margin-left: 22px; margin-top: 22px;'></p>
+			</article>
+		</div>
+
+	</script>
+
+
+	</body>
+
+</html>

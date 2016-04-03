@@ -1,0 +1,47 @@
+/* Gray-colored background */
+body {
+	background: #E8E8E8;
+	font: 300 16px 'Lato', 'Open Sans', Helvetica, Arial, sans-serif;
+}
+/* Format text displayed in the body of subtopic pages */
+p {
+	line-height: 33px;
+	font-size: 17px;
+}
+/* Remove underlines from links */
+a, a:hover {
+	text-decoration: none !important;
+}
+/* Formatting for forms */
+form {
+	margin-top: 22px;
+}
+/* Page has a white background */
+.container {
+	background: white;
+}
+/* Cursor becomes a mouse pointer when hovering over delete and edit symbols */
+.glyphicon-remove, .glyphicon-edit {
+	cursor: pointer;
+}
+/* Formatting language options on home page*/
+.language-btn {
+	display: block;
+	float: right;
+	background: white;
+	clear: both;
+	font-weight: 600;
+	font-size: 25px;
+	background: white;
+	border-radius: 0;
+	margin: 22px 0;
+	width: 300px;
+	padding: 11px 0;
+
+}
+
+.language-btn:hover {
+	color: #6E6E6E;
+}
+
+
