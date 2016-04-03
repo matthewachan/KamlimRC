@@ -11,7 +11,8 @@ var mongoose = require('mongoose');
 require('./models/Topics')
 require('./models/Subtopics')
 // Connect to our database for topics
-mongoose.connect('mongodb://localhost/kamlim')
+var db_url = process.env.MONGOHQ_URL || "mongodb://kamlimadmin:kamlimpassword1@ds015730.mlab.com:15730/kamlim"
+mongoose.connect(db_url)
 
 
 var routes = require('./routes/index');
