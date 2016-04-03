@@ -8,6 +8,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "angular-sanitize": "^1.5.3",
     "body-parser": "^1.15.0",
     "cookie-parser": "^1.4.1",
     "debug": "*",
