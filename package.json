@@ -1,7 +1,7 @@
 {
   "name": "kamlim",
   "description": "Website for Kamlim Retreat Center",
-  "author": "Matthew Chan"
+  "author": "Matthew Chan",
   "version": "1.0.0",
   "private": true,
   "scripts": {
