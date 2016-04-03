@@ -77,13 +77,15 @@
 		<hr/>
 		<!-- Form allows users to add new topics -->
 		<form ng-submit='addTopic()'>
-			<h4>Create New Topic</h4>
-			<div class='form-group'>
-				<!-- Text input bound to $scope.title -->
-				<input ng-model='title' type='text' placeholder='Title of topic' class='form-control'  required/>
+			<h4><strong>Create New Topic</strong></h4>
+			<div style='margin-left: 22px;'>
+				<div class='form-group'>
+					<!-- Text input bound to $scope.title -->
+					<input ng-model='title' type='text' placeholder='Title of topic' class='form-control'  required/>
+				</div>
+				<button type='submit' class='btn btn-primary'>Add Topic</button>
+				<button type='button' ng-click='updateTopic()' class='btn btn-secondary'>Update Topic</button>
 			</div>
-			<button type='submit' class='btn btn-primary'>Add Topic</button>
-			<button type='button' ng-click='updateTopic()' class='btn btn-secondary'>Update Topic</button>
 		</form>
 	</script>
 
@@ -109,24 +111,26 @@
 
 		<!-- Form allows users to add a subtopic under this topic -->
 		<form ng-submit='addSubtopic()'>
-			<h4>Create New Subtopic</h4>
-			<div class='form-group'>
-				<label>Subtopic Title:</label>
-				<!-- Text input bound to $scope.title -->
-				<input ng-model='title' type='text' placeholder='Title of subtopic' class='form-control' required/>
+			<h4><strong>Create New Subtopic</strong></h4>
+			<div style='margin-left: 22px;'>
+				<div class='form-group'>
+					<label>Subtopic Title:</label>
+					<!-- Text input bound to $scope.title -->
+					<input ng-model='title' type='text' placeholder='Title of subtopic' class='form-control' required/>
+				</div>
+				<div class='form-group'>
+					<label>Subtopic Image:</label>
+					<!-- Text input bound to $scope.image -->
+					<input ng-model='image' type='text' placeholder='Image file path' class='form-control'/>
+				</div>
+				<div class='form-group'>
+					<label>Subtopic Body:</label>
+					<!-- Text input bound to $scope.body -->
+					<textarea ng-model='body' rows=10 placeholder='Body of subtopic' class='form-control'></textarea>
+				</div>
+				<button type='submit' class='btn btn-primary'>Add Subtopic</button>
+				<button type='button' ng-click='updateSubtopic()' class='btn btn-secondary'>Update Subtopic</button>
 			</div>
-			<div class='form-group'>
-				<label>Subtopic Image:</label>
-				<!-- Text input bound to $scope.image -->
-				<input ng-model='image' type='text' placeholder='Image file path' class='form-control'/>
-			</div>
-			<div class='form-group'>
-				<label>Subtopic Body:</label>
-				<!-- Text input bound to $scope.body -->
-				<textarea ng-model='body' rows=10 placeholder='Body of subtopic' class='form-control'></textarea>
-			</div>
-			<button type='submit' class='btn btn-primary'>Add Subtopic</button>
-			<button type='button' ng-click='updateSubtopic()' class='btn btn-secondary'>Update Subtopic</button>
 		</form>
 	</script>
 
