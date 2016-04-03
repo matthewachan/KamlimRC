@@ -3,7 +3,11 @@
 var app = angular.module('kamlimApp', ['ui.router', 'ngSanitize']);
 
 // Configure states using UI router
-app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
+
+	// Remove hashbang URLs
+	//$locationProvider.html5Mode(true);
+	
 	// Home state for the application
 	$stateProvider.state('home', {
 		url: '/home',
@@ -38,6 +42,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 	// Other states will route to the home state
 	$urlRouterProvider.otherwise('home');
+
 }]);
 
 // Factory to retrieve data from the database and display it on the main website

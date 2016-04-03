@@ -62,7 +62,6 @@ router.get('/admin', function(req, res, next) {
 	res.render('admin', {title: 'Express'});
 });
 
-
 // GET request that returns all topics
 router.get('/topics', function(req, res, next) {
 	// Query the database for all topics
@@ -107,6 +106,10 @@ router.get('/topics/:topic/subtopics/:subtopic', function(req, res, next) {
 });
 
 
+// GET request to catch all other routes
+router.get('*', function(req, res, next) {
+	res.render('index', { title: 'Express' });
+});
 
 /********************* POST Requests **************************/
 

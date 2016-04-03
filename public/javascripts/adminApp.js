@@ -3,7 +3,10 @@
 var app = angular.module('kamlimApp', ['ui.router']);
 
 // Configure states
-app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider','$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
+	// Remove hashbang URLs
+	//$locationProvider.html5Mode(true);
+
 
 	// State that displays a list of all topics
 	$stateProvider.state('topics', {
