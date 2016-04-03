@@ -1,6 +1,8 @@
 {
   "name": "kamlim",
-  "version": "0.0.0",
+  "description": "Website for Kamlim Retreat Center",
+  "author": "Matthew Chan"
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,5 +16,8 @@
     "mongoose": "^4.4.10",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
+  },
+  "engines": {
+    "node": "5.9.1"
   }
 }
