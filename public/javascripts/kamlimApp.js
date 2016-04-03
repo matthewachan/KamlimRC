@@ -2,6 +2,8 @@
 // Name the application and pass in dependencies
 var app = angular.module('kamlimApp', ['ui.router', 'ngSanitize']);
 
+
+
 // Configure states using UI router
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -11,7 +13,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 	// Home state for the application
 	$stateProvider.state('home', {
 		url: '/home',
-		templateUrl: '/home.html',
+		templateUrl: '../templates/home.html',
 		controller:'HomeCtrl',
 		resolve: {
 			// Load all topics and subtopics whenever this state is entered
@@ -27,7 +29,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 	// State to display each page
 	.state('subtopic', {
 		url: '/subtopics/{id}',
-		templateUrl: '/subtopic.html',
+		templateUrl: '../templates/subtopic.html',
 		controller: 'PageCtrl',
 		resolve: {
 			// Load all topics and subtopics whenever this state is entered
@@ -84,4 +86,5 @@ app.controller('HomeCtrl', ['$scope', 'TopicFact', function($scope, TopicFact) {
 app.controller('PageCtrl', ['$scope', '$stateParams', 'TopicFact', function($scope, $stateParams, TopicFact) {
 	// Retrieve data for a specific subtopic
 	$scope.subtopic = TopicFact.subtopics[$stateParams.id];
+
 }]);
