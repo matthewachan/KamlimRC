@@ -14,8 +14,6 @@
     "debug": "*",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
-    "jquery-lazyload": "^1.9.7",
-    "lazyloadxt": "^1.1.0",
     "mongoose": "^4.4.10",
     "morgan": "^1.7.0",
     "serve-favicon": "*"

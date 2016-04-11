@@ -17,6 +17,7 @@ a, a:hover, a:visited {
 
 a:hover {
 	color: #888;
+	border-color: #888;
 }
 /* Formatting for forms */
 form {
