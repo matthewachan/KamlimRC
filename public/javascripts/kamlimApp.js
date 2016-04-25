@@ -25,7 +25,21 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 			}]
 		}
 	})
-
+	// State to display each page in Korean
+	.state('kr_subtopic', {
+		url: '/kr/subtopics/{id}',
+		templateUrl: '../templates/kr_subtopic.html',
+		controller: 'PageCtrl',
+		resolve: {
+			// Load all topics and subtopics whenever this state is entered
+			topicPromise: ['TopicFact', function(TopicFact) {
+				return TopicFact.getAll();
+			}],
+			subtopicPromise: ['TopicFact', function(TopicFact) {
+				return TopicFact.getSubtopics();
+			}]
+		}
+	})
 	// State to display each page
 	.state('subtopic', {
 		url: '/subtopics/{id}',

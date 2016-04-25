@@ -1,6 +1,6 @@
 /* Gray-colored background */
 html, body {
-	background: #E8E8E8;
+	background: white;
 	font: 300 16px 'Lato', 'Open Sans', Helvetica, Arial, sans-serif;
 	height: 100%;
 }

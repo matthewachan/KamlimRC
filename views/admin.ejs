@@ -62,10 +62,10 @@
 
 		<!-- List all topics in the database -->
 		<ol>
-			<div ng-repeat='topic in topics'>
+			<div ng-repeat='topic in topics | orderBy: "title"'>
 				<!-- Clicking on the X will call deleteTopic(topic._id) -->
 				<li style='font-size: 17px; margin-bottom: 11px;'>
-					<a href='#/topics/{{topic._id}}'>{{topic.title}}</a>
+					<a href='#/topics/{{topic._id}}'>{{topic.title}} ({{topic.alt_title}})</a>
 					<div class='pull-right'>
 						<span ng-click='editTopic(topic._id)' class='glyphicon glyphicon-edit'></span>
 						<span ng-click='deleteTopic(topic._id)' class='glyphicon glyphicon-remove'></span>
@@ -83,6 +83,10 @@
 					<!-- Text input bound to $scope.title -->
 					<input ng-model='title' type='text' placeholder='Title of topic' class='form-control'  required/>
 				</div>
+				<div class='form-group'>
+					<!-- Text input bound to $scope.alt_title -->
+					<input ng-model='alt_title' type='text' placeholder='Korean title of topic' class='form-control' required/>
+				</div>
 				<button type='submit' class='btn btn-primary'>Add Topic</button>
 				<button type='button' ng-click='updateTopic()' class='btn btn-secondary'>Update Topic</button>
 			</div>
@@ -92,13 +96,13 @@
 
 	<!-- Template for Subtopic state -->
 	<script type='text/ng-template' id='/subtopics.html'>
-		<h2>{{topic.title}}</h2>
+		<h2>{{topic.title}} | {{topic.alt_title}}</h2>
 		<!-- List all subtopics under a given topic -->
 		<ol>
 			<div style='text-indent:10px' ng-repeat='subtopic in topic.subtopics'>
 				<!-- Clicking on the X will call deleteSubtopic(subtopic._id) -->
 				<li style='font-size: 17px; margin-bottom: 11px;'>
-					{{subtopic.title}}
+					{{subtopic.title}} | {{subtopic.alt_title}}
 					<div class='pull-right'>
 						<span ng-click='editSubtopic(topic._id, subtopic._id)' class='glyphicon glyphicon-edit'></span>
 						<span ng-click='deleteSubtopic(topic._id, subtopic._id)' class='glyphicon glyphicon-remove'></span>
@@ -119,6 +123,11 @@
 					<input ng-model='title' type='text' placeholder='Title of subtopic' class='form-control' required/>
 				</div>
 				<div class='form-group'>
+					<label>Korean Title:</label>
+					<!-- Text input bound to $scope.alt_title -->
+					<input ng-model='alt_title' type='text' placeholder='Korean title of subtopic' class='form-control' required/>
+				</div>
+				<div class='form-group'>
 					<label>Subtopic Image:</label>
 					<!-- Text input bound to $scope.image -->
 					<input ng-model='image' type='text' placeholder='Image file path' class='form-control'/>
@@ -127,6 +136,10 @@
 					<label>Subtopic Body:</label>
 					<!-- Text input bound to $scope.body -->
 					<textarea ng-model='body' rows=10 placeholder='Body of subtopic' class='form-control'></textarea>
+				</div>
+				<div class='form-group'>
+					<!-- Text input bound to $scope.alt_body -->
+					<textarea ng-model='alt_body' rows=10 placeholder='Korean body of subtopic' class='form-control'></textarea>
 				</div>
 				<button type='submit' class='btn btn-primary'>Add Subtopic</button>
 				<button type='button' ng-click='updateSubtopic()' class='btn btn-secondary'>Update Subtopic</button>

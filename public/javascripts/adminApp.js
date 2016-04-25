@@ -21,7 +21,6 @@ app.config(['$stateProvider', '$urlRouterProvider','$locationProvider', function
 		}
 	})
 
-
 	// State that displays a list of all subtopics (under a given topic)
 	.state('subtopics', {
 		// Use the {id} attribute to specify which topic to load 
@@ -83,7 +82,7 @@ app.factory('AdminFact', ['$http', function($http) {
 			}).indexOf(data._id);
 			// Change the title to match the updated title
 			object.topics[index].title = data.title;
-
+			object.topics[index].alt_title = data.alt_title;
 		});
 	};
 
@@ -130,8 +129,10 @@ app.factory('AdminFact', ['$http', function($http) {
 			}).indexOf(data._id);
 			// Modify the subtopic to match our updated data
 			topic.subtopics[index].title = data.title;
+			topic.subtopics[index].alt_title = data.alt_title;
 			topic.subtopics[index].image = data.image;
 			topic.subtopics[index].body = data.body;
+			topic.subtopics[index].alt_body = data.alt_body;
 		});
 	};
 
@@ -161,15 +162,17 @@ app.controller('TopicCtrl', ['$scope', 'AdminFact', function($scope, AdminFact) 
 	// Function definition for adding a new topic
 	$scope.addTopic = function() {
 		// Form validation
-		if ($scope.title === '') return
+		if ($scope.title === '' || $scope.alt_title === '') return;
 
 		// Add the new topic
 		AdminFact.createTopic({
-			title: $scope.title
-		})
+			title: $scope.title,
+			alt_title: $scope.alt_title
+		});
 
 		// Reset the text fields
 		$scope.title = '';
+		$scope.alt_title = '';
 	};
 
 	// Function deletes a topic from the database using its ID
@@ -181,21 +184,23 @@ app.controller('TopicCtrl', ['$scope', 'AdminFact', function($scope, AdminFact) 
 	$scope.editTopic = function(topicId) {
 		AdminFact.editTopic(topicId).success(function(data){
 			// Fill the form fields with the data from the topic we want to edit
-			$scope.title = AdminFact.focusedTopic.title
+			$scope.title = AdminFact.focusedTopic.title;
+			$scope.alt_title = AdminFact.focusedTopic.alt_title;
 		});
 	};
 
 	// Function definition for updating a topic
 	$scope.updateTopic = function() {
 		// Form validation
-		if ($scope.title === '') return;
+		if ($scope.title === '' || $scope.alt_title === '') return;
 		AdminFact.updateTopic($scope.topics, {
-			title: $scope.title
+			title: $scope.title,
+			alt_title: $scope.alt_title
 		});
 		// Reset form fields
 		$scope.title = '';
+		$scope.alt_title = '';
 	};
-
 
 }]);
 
@@ -207,12 +212,14 @@ app.controller('SubtopicCtrl', ['$scope', 'AdminFact', 'topic', function($scope,
 	// Function definition for adding a new subtopic
 	$scope.addSubtopic = function() {
 		// Form validation
-		if ($scope.title === '') return;
+		if ($scope.title === '' || $scope.alt_title === '') return;
 		// Add a new subtopic
 		AdminFact.addSubtopic(topic._id, {
 			title: $scope.title,
+			alt_title: $scope.alt_title,
 			image: $scope.image,
-			body: $scope.body
+			body: $scope.body,
+			alt_body: $scope.alt_body
 		}).success(function(subtopic) {
 			// Push the new subtopic to our local data array
 			$scope.topic.subtopics.push(subtopic);
@@ -220,8 +227,10 @@ app.controller('SubtopicCtrl', ['$scope', 'AdminFact', 'topic', function($scope,
 
 		// Reset form fields
 		$scope.title = '';
+		$scope.alt_title = '';
 		$scope.image = '';
 		$scope.body = '';
+		$scope.alt_body = '';
 	};
 
 	// Function definition for removing a subtopic
@@ -234,23 +243,29 @@ app.controller('SubtopicCtrl', ['$scope', 'AdminFact', 'topic', function($scope,
 		AdminFact.editSubtopic(topicId, subtopicId).success(function(data) {
 			// Fill in the page's form fields with data from the subtopic we want to edit
 			$scope.title = AdminFact.focusedSubtopic.title;
+			$scope.alt_title = AdminFact.focusedSubtopic.alt_title;
 			$scope.image = AdminFact.focusedSubtopic.image;
 			$scope.body = AdminFact.focusedSubtopic.body;
+			$scope.alt_body = AdminFact.focusedSubtopic.alt_body;
 		});
 	};
 
 	// Function definition for updating a subtopic
 	$scope.updateSubtopic = function() {
 		// Form validation
-		if ($scope.title === '') return;
+		if ($scope.title === '' || $scope.alt_title === '') return;
 		AdminFact.updateSubtopic($scope.topic, {
 			title: $scope.title,
+			alt_title: $scope.alt_title,
 			image: $scope.image,
-			body: $scope.body
+			body: $scope.body,
+			alt_body: $scope.alt_body
 		});
 		// Reset form fields
 		$scope.title = '';
+		$scope.alt_title = '';
 		$scope.image = '';
 		$scope.body = '';
+		$scope.alt_body = '';
 	}
 }]);

@@ -6,9 +6,9 @@
 
 <div class='col-md-10 col-md-offset-1'>
 	<article style='margin-top: 44px; margin-bottom: 44px'>
-		<h2>{{subtopic.title}}</h2>
-		<p ng-bind-html='subtopic.body' style='margin-left: 22px; margin-top: 22px;'>
-		</p>
+		<h2>{{subtopic.alt_title}}</h2>
+		<!-- Body of the page here -->
+		<p ng-bind-html='subtopic.alt_body' style='margin-left: 22px; margin-top: 22px;'></p>
 		<!-- Custom content for Contact Us page -->
 		<div ng-show='subtopic.title == "Contact Us"'>
 			<form class='col-md-8'>
@@ -24,12 +24,12 @@
 				<button class='btn btn-primary' style='margin-left: 15px; margin-bottom: 44px'>Submit</button>
 			</form>
 			<div class='col-md-4'>
-				<h3>Address</h3>
+				<h3>Address (in Korean)</h3>
 				<address>
 					24101 Christmas Tree Ln<br/>
 					Perris, California 92570
 				</address>
-				<h3>Phone</h3>
+				<h3>Phone (in Korean)</h3>
 				<address>
 					Email: <a href='mailto:kamlimretreat@gmail.com'>kamlimretreat@gmail.com</a><br/>
 					Primary Phone: 213.249.2467<br/>

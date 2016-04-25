@@ -50,6 +50,11 @@ router.get('/', function(req, res, next) {
 	res.render('index', { title: 'Express' });
 });
 
+// GET request for the Kamlim home page in Korean
+router.get('/kr', function(req, res, next) {
+	res.render('alt_index', {title: 'Express'});
+});
+
 // GET request for the Kamlim admin page
 router.get('/admin', function(req, res, next) {
 	// Render the page defined in admin.ejs
@@ -116,11 +121,11 @@ router.post('/topics', function(req, res, next) {
 // POST request for adding a new subtopic
 router.post('/topics/:topic/subtopics', function(req, res, next) {
 	// Create a new subtopic
-	var subtopic = new Subtopic(req.body)
+	var subtopic = new Subtopic(req.body);
 	// New subtopic contains a reference to its topic
-	subtopic.topic = req.topic
+	subtopic.topic = req.topic;
 	// Save the new subtopic to our database
-	subtopic.save(function(err, subtopic) {{
+	subtopic.save(function(err, subtopic) {
 		// Error handling
 		if (err) return next(err);
 		// Add the subtopic to our topic
@@ -131,7 +136,7 @@ router.post('/topics/:topic/subtopics', function(req, res, next) {
 			if (err) return next(err);
 			res.json(subtopic);
 		})
-	}})
+	})
 })
 
 
@@ -140,7 +145,7 @@ router.post('/topics/:topic/subtopics', function(req, res, next) {
 // PUT request for updating a topic
 router.put('/topics/:topic', function(req, res, next) {
 	// Search the database for the topic and update its fields
-	Topic.findOneAndUpdate({_id: req.params.topic}, {$set: {title: req.body.title}}, {new: true}, function(err, topic) {
+	Topic.findOneAndUpdate({_id: req.params.topic}, {$set: {title: req.body.title, alt_title: req.body.alt_title}}, {new: true}, function(err, topic) {
 		// Error handling
 		if (err) return next(err);
 		// Return the updated version of the topic
@@ -151,7 +156,7 @@ router.put('/topics/:topic', function(req, res, next) {
 // PUT request for updating a subtopic
 router.put('/topics/:topic/subtopics/:subtopic', function(req, res, next) {
 	// Search the database for the subtopic and update its fields
-	Subtopic.findOneAndUpdate({_id: req.params.subtopic}, {$set: {title: req.body.title, image: req.body.image, body: req.body.body}}, {new: true}, function(err, subtopic) {
+	Subtopic.findOneAndUpdate({_id: req.params.subtopic}, {$set: {title: req.body.title, alt_title: req.body.alt_title, image: req.body.image, body: req.body.body, alt_body: req.body.alt_body}}, {new: true}, function(err, subtopic) {
 		// Error handling
 		if (err) return next(err);
 		// Return the updated version of the subtopic
