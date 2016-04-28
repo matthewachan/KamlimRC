@@ -1,0 +1,23 @@
+<div class='col-md-8 col-md-offset-2'>
+	<!-- Page header -->
+	<header ng-controller='HomeCtrl'>
+		<a href='/'><h1 style='font-size:58px; margin-top: 44px;' class='text-uppercase text-center'><strong>Kamlim Retreat Center</strong></h1>
+		<h2 style='margin-top: -8px' class='text-center'><strong>감림산 수양관</strong></h2></a>
+
+
+		<!-- Navigation Menu -->
+		<nav class='navbar col-md-10 col-md-offset-2'>
+			<div class='container-fluid'>
+				<ul class='nav navbar-nav'>
+
+					<li class='dropdown' ng-repeat='topic in topics | orderBy: "title"'><a class='dropdown-toggle' data-toggle='dropdown' href=''>{{topic.title}}<span class='caret'></span></a>
+						<ul  class='dropdown-menu'>
+							<li ng-repeat='subtopic in subtopics' ng-show='subtopic.topic == topic._id'><a href='#/en/subtopics/{{$index}}'>{{subtopic.title}}</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>	
+	</header>
+	
+</div>

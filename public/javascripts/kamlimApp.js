@@ -13,8 +13,20 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 	// Home state for the application
 	$stateProvider.state('home', {
 		url: '/home',
-		templateUrl: '../templates/home.html',
-		controller:'HomeCtrl',
+		views: {
+			'': {
+				templateUrl: '../templates/home.html',
+				controller: 'HomeCtrl'
+			},
+			'en_nav@home': {
+				templateUrl: '../templates/en_nav.html',
+				controller: 'HomeCtrl'
+			},
+			'kr_nav@home': {
+				templateUrl: '../templates/kr_nav.html',
+				controller: 'HomeCtrl'
+			}
+		},
 		resolve: {
 			// Load all topics and subtopics whenever this state is entered
 			topicPromise: ['TopicFact', function(TopicFact) {
@@ -28,8 +40,16 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 	// State to display each page in Korean
 	.state('kr_subtopic', {
 		url: '/kr/subtopics/{id}',
-		templateUrl: '../templates/kr_subtopic.html',
-		controller: 'PageCtrl',
+		views: {
+			'': {
+				templateUrl: '../templates/kr_subtopic.html',
+				controller: 'PageCtrl'
+			},
+			'kr_nav@kr_subtopic': {
+				templateUrl: '../templates/kr_nav.html',
+				controller: 'HomeCtrl'
+			}
+		},
 		resolve: {
 			// Load all topics and subtopics whenever this state is entered
 			topicPromise: ['TopicFact', function(TopicFact) {
@@ -41,10 +61,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 		}
 	})
 	// State to display each page
-	.state('subtopic', {
-		url: '/subtopics/{id}',
-		templateUrl: '../templates/subtopic.html',
-		controller: 'PageCtrl',
+	.state('en_subtopic', {
+		url: '/en/subtopics/{id}',
+		views: {
+			'': {
+				templateUrl: '../templates/en_subtopic.html',
+				controller: 'PageCtrl'
+			},
+			'en_nav@en_subtopic': {
+				templateUrl: '../templates/en_nav.html',
+				controller: 'HomeCtrl'
+			}
+		},
 		resolve: {
 			// Load all topics and subtopics whenever this state is entered
 			topicPromise: ['TopicFact', function(TopicFact) {
