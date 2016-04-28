@@ -14,10 +14,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 	$stateProvider.state('home', {
 		url: '/home',
 		views: {
+			// Default view
 			'': {
 				templateUrl: '../templates/home.html',
 				controller: 'HomeCtrl'
 			},
+			// Nested views
 			'en_nav@home': {
 				templateUrl: '../templates/en_nav.html',
 				controller: 'HomeCtrl'
@@ -41,10 +43,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 	.state('kr_subtopic', {
 		url: '/kr/subtopics/{id}',
 		views: {
+			// Default view
 			'': {
 				templateUrl: '../templates/kr_subtopic.html',
 				controller: 'PageCtrl'
 			},
+			// Nested views
 			'kr_nav@kr_subtopic': {
 				templateUrl: '../templates/kr_nav.html',
 				controller: 'HomeCtrl'
@@ -64,10 +68,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 	.state('en_subtopic', {
 		url: '/en/subtopics/{id}',
 		views: {
+			// Default view
 			'': {
 				templateUrl: '../templates/en_subtopic.html',
 				controller: 'PageCtrl'
 			},
+			// Nested views
 			'en_nav@en_subtopic': {
 				templateUrl: '../templates/en_nav.html',
 				controller: 'HomeCtrl'
