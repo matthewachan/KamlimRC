@@ -24,8 +24,7 @@ form {
 	margin-top: 22px;
 }
 /* Page has a white background */
-.container {
-	
+.container {	
 	min-height: 100%;
 	background-color: white;
 }
