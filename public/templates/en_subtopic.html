@@ -1,7 +1,7 @@
 <div ui-view='en_nav'></div>
 <span ng-show='subtopic.image'>
-	<div class='center-block' style='overflow: hidden; height: 200px; width: 100%;'>
-			<img src='{{subtopic.image}}' style='width: 1260px; margin-top:-360px;' alt=''/> 
+	<div class='center-block' style='overflow: hidden; height: 200px; width: 85%;'>
+			<img src='{{subtopic.image}}' style='width: 100%; height: auto; margin-top:-300px;' alt=''/> 
 	</div>
 </span>
 
@@ -96,8 +96,8 @@
 		</div>
 
 		
-		<!-- Custom content for Usage Agreement page -->
-		<object ng-show='subtopic.title == "Usage Agreement"' data='../pdfs/contract.pdf' type='application/pdf' width='100%' height='800'>
+		<!-- Custom content for Contract Agreement page -->
+		<object ng-show='subtopic.title == "Contract Agreement"' data='../pdfs/contract.pdf' type='application/pdf' width='100%' height='800'>
 			<a href='../pdfs/contract.pdf'>contract.pdf</a>
 		</object>
 		
